@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Распродажа</title></head>
+<body>
+    <h1>Распродажа</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'catalog:product_detail' product.id %}">
+                    {{ product.name }} - {{ product.get_final_price }} руб.
+                </a>
+            </li>
+        {% empty %}
+            <li>Товаров со скидкой пока нет</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

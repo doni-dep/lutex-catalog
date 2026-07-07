@@ -1,0 +1,12 @@
+<h1>Оформление заказа</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Адрес доставки: <input type="text" name="address" required></p>
+    <p>Телефон: <input type="text" name="phone" required></p>
+    <p>Организация: <input type="text" name="company"></p>
+    <p>Город: <input type="text" name="city"></p>
+    <p>Улица: <input type="text" name="street"></p>
+    <p>Дом: <input type="text" name="house"></p>
+    <p>Комментарий: <textarea name="comment"></textarea></p>
+    <button type="submit">Оформить</button>
+</form>

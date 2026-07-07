@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Оптовая заявка</title></head>
+<body>
+    <h1>Оптовая заявка</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Имя: <input type="text" name="name" required></p>
+        <p>Телефон: <input type="text" name="phone" required></p>
+        <p>Комментарий: <textarea name="comment"></textarea></p>
+        <p><input type="checkbox" name="consent" required> Согласие на обработку данных</p>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>

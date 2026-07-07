@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ product.name }}</title></head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>Цена: {{ product.get_final_price }} руб.</p>
+    <p>Размеры: {{ product.sizes|join:", " }}</p>
+    <a href="{% url 'catalog:add_to_cart' product.id %}">Добавить в корзину</a>
+    <a href="{% url 'catalog:add_to_wishlist' product.id %}">В избранное</a>
+
+    <h2>Отзывы</h2>
+    <ul>
+        {% for review in reviews %}
+            <li>{{ review.name }} - {{ review.rating }}★: {{ review.text }}</li>
+        {% empty %}
+            <li>Отзывов пока нет</li>
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'catalog:add_review' product.id %}">
+            {% csrf_token %}
+            <p>Оценка: <input type="number" name="rating" min="1" max="5" required></p>
+            <p>Текст: <textarea name="text" required></textarea></p>
+            <button type="submit">Отправить отзыв</button>
+        </form>
+    {% endif %}
+</body>
+</html>

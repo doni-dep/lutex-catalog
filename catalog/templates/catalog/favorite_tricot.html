@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Любимый трикотаж</title></head>
+<body>
+    <h1>Любимый трикотаж</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'catalog:product_detail' product.id %}">
+                    {{ product.name }} - {{ product.price }} руб.
+                </a>
+            </li>
+        {% empty %}
+            <li>Товаров пока нет</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
